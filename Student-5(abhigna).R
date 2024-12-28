@@ -75,7 +75,6 @@ Shopping_data$SpendingScoreCategory <- cut(Shopping_data$SpendingScore,
                                            labels = c("Low", "Medium", "High"),
                                            right = FALSE)
 
-# Normalize data for a fair comparison (convert to percentage)
 normalized_data <- Shopping_data %>%
   group_by(AnnualIncome, SpendingScoreCategory) %>%
   summarise(count = n()) %>%
@@ -96,7 +95,6 @@ ggplot(normalized_data, aes(x = factor(AnnualIncome), y = percentage, fill = Spe
 # Question-4(A):
 
 install.packages("reshape2")
-# Install and load necessary libraries
 install.packages("reshape")
 install.packages("pheatmap")
 library(reshape)
@@ -105,10 +103,8 @@ library(pheatmap)
 # Calculate Spearman's correlation matrix for multiple variables
 cor_matrix <- cor(Shopping_data[, c("AnnualIncome", "SpendingScore")], method = "spearman")
 
-# Print the correlation matrix
 print(cor_matrix)
 
-# Convert correlation matrix to a long format for ggplot2 (using reshape package)
 cor_matrix_melted <- melt(cor_matrix)
 
 # Create a correlation heatmap using pheatmap
@@ -128,11 +124,8 @@ print(correlation_result)
 
 # Question-4(B):
 
-
-# Rename your dataset (replace 'Shopping_data' with your actual dataset name)
 my_data <- Shopping_data
 
-# Load necessary library
 library(ggplot2)
 
 # Check histogram and normal curve overlay
