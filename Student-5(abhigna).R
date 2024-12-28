@@ -158,18 +158,17 @@ if (shapiro_test$p.value > 0.05) {
 
 # Question-5:
 
-# Load necessary library
 library(dplyr)
 
 # Discretize 'AnnualIncome' into Low, Medium, High categories
 Shopping_data$IncomeCategory <- cut(Shopping_data$AnnualIncome,
-                              breaks = c(0, 30000, 70000, Inf),  # Adjust ranges as needed
+                              breaks = c(0, 30000, 70000, Inf), 
                               labels = c("Low", "Medium", "High"),
                               right = FALSE)
 
 # Discretize 'SpendingScore' into Low, Medium, High categories
 Shopping_data$SpendingCategory <- cut(Shopping_data$SpendingScore,
-                                breaks = c(0, 30, 60, 100),  # Adjust ranges as needed
+                                breaks = c(0, 30, 60, 100), 
                                 labels = c("Low", "Medium", "High"),
                                 right = FALSE)
 
@@ -182,10 +181,8 @@ print(contingency_table)
 # Perform the Chi-square Test
 chi_square_test <- chisq.test(contingency_table)
 
-# Print the Chi-square test results
 print(chi_square_test)
 
-# Check the results
 if (chi_square_test$p.value < 0.05) {
   cat("There is a significant relationship between Annual Income and Spending Score (p < 0.05).\n")
 } else {
@@ -194,8 +191,6 @@ if (chi_square_test$p.value < 0.05) {
 
 
 
-
-# Load necessary library
 library(ggplot2)
 
 # Define the output file as a PNG
@@ -203,8 +198,8 @@ png("AnnualIncome_vs_SpendingScore.png", width = 800, height = 600)
 
 # Create the scatter plot with a linear trendline
 ggplot(Shopping_data, aes(x = AnnualIncome, y = SpendingScore)) +
-  geom_point(color = "blue", alpha = 0.6) +  # Scatter plot points
-  geom_smooth(method = "lm", color = "red", se = FALSE) +  # Linear trendline
+  geom_point(color = "blue", alpha = 0.6) + 
+  geom_smooth(method = "lm", color = "red", se = FALSE) +  
   labs(
     title = "Relationship Between Annual Income and Spending Score",
     x = "Annual Income (in USD)",
