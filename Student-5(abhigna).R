@@ -12,7 +12,6 @@ install.packages("ggplot2")
 
 install.packages("dplyr")
 
-# Load required libraries 
 library(ggplot2)
 library(MASS)
 
@@ -21,8 +20,8 @@ library(MASS)
 
 # Scatterplot with Linear Trendline
 ggplot(Shopping_data, aes(x = AnnualIncome, y = SpendingScore)) +
-  geom_point() +  # scatter plot
-  geom_smooth(method = "lm", color = "blue", se = FALSE) +  # linear trendline
+  geom_point() + 
+  geom_smooth(method = "lm", color = "blue", se = FALSE) +  
   labs(title = "Scatterplot of Annual Income vs Spending Score",
        x = "Annual Income (in USD)",
        y = "Spending Score") +
@@ -43,7 +42,6 @@ ggplot(Shopping_data, aes(x = SpendingScore)) +
 
 # Question-2(A):
 
-# Load required library
 library(ggplot2)
 
 # Boxplot of Spending Score by Annual Income categories
@@ -69,11 +67,9 @@ ggplot(Shopping_data, aes(x = SpendingScore)) +
 
 # Question-3:
 
-# Load required library
 library(ggplot2)
 library(dplyr)
 
-# Create a new variable to categorize SpendingScore into categories (Low, Medium, High)
 Shopping_data$SpendingScoreCategory <- cut(Shopping_data$SpendingScore, 
                                            breaks = c(0, 33, 66, 100), 
                                            labels = c("Low", "Medium", "High"),
